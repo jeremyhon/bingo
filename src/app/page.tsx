@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import BingoBoard from "../components/BingoBoard";
 
 export default function Home() {

@@ -65,7 +65,7 @@ const BingoBoard = () => {
   return (
     <div className="p-2 min-w-[400px]">
       <h1 className="text-2xl font-bold text-center mb-4">
-        T &amp; J's Wedding Bingo
+        T &amp; J&apos;s Wedding Bingo
       </h1>
       <div className="grid grid-cols-5 gap-1">
         {BINGO_QUESTIONS.map((question, index) => (
