@@ -62,16 +62,67 @@ const BingoBoard = () => {
     setAnswers(newAnswers);
   };
 
+  const handleReset = () => {
+    if (
+      window.confirm(
+        "Are you sure you want to reset the board? This will clear all your answers."
+      )
+    ) {
+      setAnswers(Array(25).fill(""));
+      localStorage.removeItem("bingoAnswers");
+    }
+  };
+
+  const isPartOfWinningLine = (index: number): boolean => {
+    // Check if the cell is empty
+    if (!answers[index]) return false;
+
+    const row = Math.floor(index / 5);
+    const col = index % 5;
+
+    // Check horizontal line
+    if (answers.slice(row * 5, (row + 1) * 5).every((cell) => cell !== "")) {
+      return true;
+    }
+
+    // Check vertical line
+    if ([0, 1, 2, 3, 4].every((r) => answers[r * 5 + col] !== "")) {
+      return true;
+    }
+
+    // Check diagonal (top-left to bottom-right)
+    if (index % 6 === 0) {
+      if ([0, 6, 12, 18, 24].every((i) => answers[i] !== "")) {
+        return true;
+      }
+    }
+
+    // Check diagonal (top-right to bottom-left)
+    if (index % 4 === 0 && index < 24) {
+      if ([4, 8, 12, 16, 20].every((i) => answers[i] !== "")) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
   return (
     <div className="p-2 min-w-[400px]">
       <h1 className="text-2xl font-bold text-center mb-4">
         T &amp; J&apos;s Wedding Bingo
       </h1>
-      <div className="grid grid-cols-5 gap-1">
+      <div className="grid grid-cols-5 gap-2">
         {BINGO_QUESTIONS.map((question, index) => (
           <div
             key={index}
-            className={`${question.color} rounded-lg shadow-md p-1 aspect-square flex flex-col text-xs font-medium relative`}
+            className={`${
+              question.color
+            } text-center rounded-lg shadow-md p-1 aspect-square flex flex-col text-xs font-medium relative ${
+              isPartOfWinningLine(index)
+                ? "ring-2 ring-yellow-200 ring-opacity-50 shadow-lg shadow-yellow-100/50"
+                : ""
+            }`}
           >
             {index === 12 && (
               <div className="absolute inset-0 text-center text-gray-300 font-bold text-lg pointer-events-none">
@@ -89,6 +140,12 @@ const BingoBoard = () => {
           </div>
         ))}
       </div>
+      <button
+        onClick={handleReset}
+        className="mt-8 px-3 py-1 text-sm bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors mx-auto block"
+      >
+        Reset Board
+      </button>
     </div>
   );
 };
