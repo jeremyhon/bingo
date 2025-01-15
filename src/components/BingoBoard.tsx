@@ -112,6 +112,15 @@ const BingoBoard = () => {
       <h1 className="text-2xl font-bold text-center mb-4">
         T &amp; J&apos;s Wedding Bingo
       </h1>
+      <ol className="text-xs mb-4 list-decimal pl-5">
+        <li>Ask around for answers</li>
+        <li>
+          Fill in at least two rows of answers. Horizontally, Diagonally or
+          Vertically
+        </li>
+        <li>Come get your answers checked by T or J</li>
+        <li>Win fabulous prizes!</li>
+      </ol>
       <div className="grid grid-cols-5 gap-2">
         {BINGO_QUESTIONS.map((question, index) => (
           <div
