@@ -117,7 +117,7 @@ const BingoBoard = () => {
           <div
             key={index}
             className={`${
-              question.color
+              isPartOfWinningLine(index) ? "bg-yellow-100" : question.color
             } text-center rounded-lg shadow-md p-1 aspect-square flex flex-col text-xs font-medium relative ${
               isPartOfWinningLine(index)
                 ? "ring-2 ring-yellow-200 ring-opacity-50 shadow-lg shadow-yellow-100/50"
