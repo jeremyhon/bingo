@@ -14,7 +14,7 @@ const BINGO_QUESTIONS: BingoQuestion[] = [
   { text: "J's Fav Pokemon", color: "bg-blue-50" },
   { text: "T's Chinese Name", color: "bg-pink-50" },
   { text: "T's CCA Instrument", color: "bg-pink-50" },
-  { text: "T's Fav Color", color: "bg-pink-50" },
+  { text: "T's Last Workcation Location", color: "bg-pink-50" },
   { text: "Any video game J has played", color: "bg-blue-50" },
   { text: "Our Honeymoon Destination", color: "bg-purple-50" },
   { text: "J's NOC location", color: "bg-blue-50" },
